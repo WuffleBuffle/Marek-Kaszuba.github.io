@@ -1,20 +1,11 @@
-/*
-	Overflow by Pixelarity
-	pixelarity.com @pixelarity
-	License: pixelarity.com/license
-*/
-
 (function($) {
 
 	var settings = {
 		
-		// Full screen header?
 			fullScreenHeader: true,
-
-		// Parallax background effect?
+		
 			parallax: true,
 
-		// Parallax factor (lower = more intense, higher = less intense).
 			parallaxFactor: 10
 
 	};
@@ -42,18 +33,18 @@
 		
 		}
 			
-		// Disable animations/transitions until the page has loaded.
+		
 			$body.addClass('is-loading');
 			
 			$window.on('load', function() {
 				$body.removeClass('is-loading');
 			});
 			
-		// CSS polyfills (IE<9).
+		
 			if (skel.vars.IEVersion < 9)
 				$(':last-child').addClass('last-child');
 
-		// Forms (IE<10).
+		
 			var $form = $('form');
 			if ($form.length > 0) {
 				
@@ -70,10 +61,10 @@
 
 			}
 			
-		// Scrolly links.
+		
 			$('.scrolly').scrolly(1000, function() { return (skel.isActive('mobile') ? 70 : 190); });
 	
-		// Full screen header.
+		
 			if (settings.fullScreenHeader) {
 				
 				var $header = $('#header');
@@ -105,9 +96,9 @@
 			
 			}
 			
-		// Parallax background.
+		
 
-			// Disable parallax on IE (smooth scrolling is jerky), and on mobile platforms (= better performance).
+			
 				if (skel.vars.browser == 'ie'
 				||	skel.vars.isMobile)
 					settings.parallax = false;
@@ -119,13 +110,13 @@
 				$window
 					.on('scroll.overflow_parallax', function() {
 					
-						// Adjust background position.
+						
 							$bg.css('background-position', 'center ' + (-1 * (parseInt($window.scrollTop()) / settings.parallaxFactor)) + 'px');
 					
 					})
 					.on('resize.overflow_parallax', function() {
 						
-						// If we're in a situation where we need to temporarily disable parallax, do so.
+						
 							if (!skel.isActive('wide')
 							||	skel.isActive('narrow')) {
 								
@@ -134,11 +125,11 @@
 							
 							}
 						
-						// Otherwise, continue as normal.
+						
 							else
 								$bg = $body;
 					
-						// Trigger scroll handler.
+						
 							$window.triggerHandler('scroll.overflow_parallax');
 					
 					})
@@ -146,7 +137,7 @@
 
 			}
 			
-		// Poptrox.
+		
 			$('.gallery').poptrox({
 				useBodyOverflow: false,
 				usePopupEasyClose: false,
